@@ -51,7 +51,19 @@ fun main(){
     triangle1.getarea()
     val triangle2=Triangle(4.0,5.0)
     triangle2.getarea()
-    
+    val employee1=Employee("rita","khaseyi","CEO TECH SOLS")
+    println(employee1.getFullName())
+    val employee2=Employee("Alen","reth","Manager")
+    println(employee2.getFullName())
+    val emp1=Employees("rita khaseyi","CEO",100000.0)
+   var bonus= emp1.calculateBonus()
+    println("my bonus salary  is $bonus ")
+    val emp2=Employees("zippy","manager",50000.0)
+    var bonus1=emp2.calculateBonus()
+    println("my bonus salary is $bonus1")
+    val emp3=Employees("trish","frontend",70000.0)
+    var bonus2=emp3.calculateBonus()
+    println("my bonus salary is $bonus2")
 
 }
 //Create a class called Person with properties name and age, and methods introduce() and celebrateBirthday().
@@ -187,5 +199,31 @@ class Triangle(var base:Double,var height:Double):Shape(){
     override fun getarea() {
         var triangleArea=0.5*(base*height)
         println("the area of the triangle is $triangleArea")
+    }
+}
+
+//Create a class called Person with properties firstName and lastName.
+// Create a subclass called Employee with a property position and a method called getFullName
+// that returns the employee's full name and position.
+// Create an instance of Employee and call its getFullName method.
+open class Personss(var Firstname:String,var Lastname:String){
+
+}
+class Employee(Firstname:String,Lastname:String,var position:String):Personss(Firstname,Lastname){
+    fun getFullName():String{
+        var fulname="hi i am $Firstname $Lastname and am working as a $position"
+       return fulname
+    }
+}
+//Create a class named Employee with properties for name, position, and salary.
+// Add a method to calculate the bonus for the employee based on their position and salary.
+class Employees(var name:String,var position:String,var salary:Double){
+    fun calculateBonus():Double{
+       return when(position){
+           "manager"->salary*5.0
+           "CEO" ->salary *7.0
+           "frontend" ->salary*3.0
+           else ->salary *0.5
+       }
     }
 }
